@@ -1,0 +1,33 @@
+.title-row{
+    font-size: 35px;
+    color: black;
+    text-align: center;
+}
+
+.center-row{
+    padding: 25px;
+    position: relative;
+    margin: auto;
+    width: 75%;
+    background-color: lightgrey;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.blogger-name{
+    padding: 30px;
+    font-size: 40px;
+}
+
+.date-created{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    color: darkgrey;
+    font-size: 13px;
+}
+
+body{
+    background-color: darkgrey;
+    opacity: 0.8;
+}

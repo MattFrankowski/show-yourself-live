@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <p class="title-row">{{ post.title }}</p>
+    <div class="center-row">
+        <p>{{post.content}}</p>
+        <div class="date-created">
+            {{ post.date_created }}
+        </div>
+    <button type="button" class="btn btn-dark">Back</button>
+    <button type="button" class="btn btn-info">Update</button>
+    <button type="button" class="btn btn-danger">Delete</button>
+    </div>
+{% endblock %}

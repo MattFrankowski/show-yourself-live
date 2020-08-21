@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    <span class="blogger-name">{{blogger.name}}</span>
+    <div class="center-row">
+    {% for post in posts %}
+        <p><a href="{% url 'post' post.id %}"/>{{post.title}}</p>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+
