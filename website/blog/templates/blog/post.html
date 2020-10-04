@@ -1,0 +1,53 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="container-fluid p-3">
+        <div class="row">
+            <div class="col-md">
+                <p class="display-4 text-center">{{ post.title }}</p>
+            </div>
+        </div>
+        <div class="row pt-3 pr-3 pl-3">
+            <div class="col-md-10 p-3 border">
+                {% if post.image %}
+                    <div class="text-center p-3">
+                        <img src="{{ post.image.url }}" class="mb-2 post-image">
+                    </div>
+                {% endif %}
+                <p>{{ post.content|safe }}</p>
+            </div>
+            <div class="col-md-2 border p-3 w-100">
+                <p>Author: {{ post.author }}</p>
+                <p>{{ post.date_created|date:"d/m/Y fA" }}</p>
+                {% block manage_post %}
+                    {% if user.is_authenticated %}
+                        <div class="btn-group">
+                            <a type="button" class="btn btn-dark" href="{% url 'blogger' %}">Back</a><br>
+                            <a type="button" class="btn btn-info" href="{% url 'update_post' post.id %}">Update</a><br>
+                            <a type="button" class="btn btn-danger" href="{% url 'delete_post' post.id %}">Delete</a>
+                         </div>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="row pt-3 pr-3 pl-3">
+            <div class="col-md-6 border p-3">
+                <p class="display-4 text-center mt-3">Comments</p>
+            </div>
+            <div class="col-md-6 border p-3">
+                {% block add_comment %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="row pr-3 pl-3">
+            <div class="col-md border pd-3 pt-3">
+                {% for comment in comments %}
+                        <a href="{% url "blogger_visit" comment.user.blogger.id %}" class="font-weight-bold">{{ comment.user.blogger.name }}</a>
+                        <span>: {{ comment.content }}</span>
+                        <p class="text-right date">{{ comment.date_created|date:"d/m/Y fA" }}</p>
+                        <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

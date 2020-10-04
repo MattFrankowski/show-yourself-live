@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="d-flex flex-column align-items-center padding">
+            <div class="p-1 bd-highlight user-form">
+                <div class="padding">
+                    <div class="title-row">Create Post</div>
+                    {{ form.media }}
+                    {{ form.title|as_crispy_field }}
+                    {{ form.content }}
+                    <div class="text-center mb-3">
+                        {{ form.image }}
+                    </div>
+                    {{ form.author.as_hidden }}
+                    <button class="btn btn-success" type="submit">Submit Post</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

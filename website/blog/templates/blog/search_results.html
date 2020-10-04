@@ -1,0 +1,6 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <h4 class="display-4 padding">{{ bloggers.count }} Profiles Found:</h4>
+    {% include "blog/users_card.html" %}
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends "blog/blogger.html" %}
+
+{% block post %}
+    <p class="card-text">{{ post.content|truncatewords:5|safe }} <a href="{% url "post_visit" post.author.id post.id %}">See More</a></p>
+{% endblock %}

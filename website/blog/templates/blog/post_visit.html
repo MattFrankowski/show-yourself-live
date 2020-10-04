@@ -1,0 +1,22 @@
+{% extends "blog/post.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block manage_post %}
+    <a type="button" class="btn btn-dark" href="{% url 'blogger_visit' post.author.id %}">Back</a>
+{% endblock %}
+{% block add_comment %}
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ form.user.as_hidden }}
+            {{ form.post.as_hidden }}
+            <div class="row">
+                <div class="col-md-10 mt-3 center">
+                    {{ form.content|as_crispy_field }}
+                </div>
+                <div class="col-md-2 center">
+                    <button type="submit" class="btn btn-info align-start">Add</button>
+                </div>
+            </div>
+        </form>
+{% endblock %}

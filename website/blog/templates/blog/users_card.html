@@ -1,0 +1,18 @@
+<div class="container-fluid padding">
+    <div class="row padding">
+        {% for blogger in bloggers %}
+            <div class="col-md-4">
+                <div class="card h-100 w-100 text-center">
+                    <div class="text-center">
+                        <img class="card-img-top profile-pic" src="{{ blogger.photo.url }}">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ blogger.name }}</h4>
+                        <p>{{ blogger.bio }}</p>
+                        <a href="{% url 'blogger_visit' blogger.id %}" class="btn btn-outline-info">See Profile</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

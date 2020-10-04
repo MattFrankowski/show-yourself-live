@@ -1,0 +1,40 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <a class="navbar-brand" href="{% url "home" %}">Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+          {% if user.is_authenticated %}
+              <span class="nav-item nav-link padding">Hello, {{ user.username }}</span>
+          {% else %}
+              <span class="nav-item nav-link padding">Hello, Guest</span>
+          {% endif %}
+            <form action="{% url "search_results" %}" method="GET">
+                <div class="input-group search_field">
+                    <input type="text" class="form-control"  name="search_blogger" placeholder="Blogger's name...">
+                    <div class="input-group-append">
+                        <input type="submit" value="Search" class="btn btn-outline-success">
+                    </div>
+                </div>
+            </form>
+      </div>
+            <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="{% url "home" %}">Home<span class="sr-only">(current)</span></a>
+                {% if user.is_authenticated %}
+                    {% if user.blogger %}
+                        <a class="nav-item nav-link" href="{% url "create_post" %}">Create Post</a>
+                        <a class="nav-item nav-link" href="{% url "blogger" %}">My Blog</a>
+                    {% else %}
+                        <a class="nav-item nav-link" href="{% url "create_blog" %}">Create Blog</a>
+                    {% endif %}
+                    <a class="nav-item nav-link" href="{% url 'user'%}">Account</a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                {% endif %}
+        </div>
+      </div>
+    </nav>

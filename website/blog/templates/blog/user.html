@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid user-container padding">
+    <div class="container-fluid user-container padding">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{{ user.blogger.photo.url }}">
+            </div>
+            <div class="col-md-6 user-field">
+                <p>Username: {{ user.username }}</p>
+                <p>Email: {{ user.email }}</p>
+                <a href="{% url "password_reset" %}" class="btn btn-warning">Change password</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
